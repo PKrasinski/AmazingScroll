@@ -51,12 +51,27 @@ var AmazingScroll = function (config_user) {
         }
 
         self.addScrollEvent = function() {
-            window.addEventListener('scroll', function() {
-                if (self.position() < config.start.ratio) {
-                    self.animate();
-                }
-            });
+            window.addEventListener('scroll', throttle(scrollFuncition, 200));
         };
+
+        var scrollFuncition = function() {
+            if (self.position() < config.start.ratio) {
+                self.animate();
+            }
+        }
+
+        var throttle = function (callback, time) {
+            var wait = false;
+            return function () {
+                if(!wait){
+                    setTimeout(function () {
+                        callback();
+                        wait = false;
+                    }, time)
+                }
+                wait = true;
+            }
+        }
 
         self.addRetryFunction = function() {
             element.asRetry = function() {
