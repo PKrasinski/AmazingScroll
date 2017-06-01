@@ -100,11 +100,13 @@ var AmazingScroll = function (config_user) {
             finishStyle = [];
 
         self.init = function () {
-            if(config.animation[data])
-                data = config.animation[data];
-            var tab = [];
-            tab = data.split(';');
-            tab.forEach(function(e) {
+            data = data.split(';');
+            var first = data[0];
+            if(config.animation[first]){
+                data.shift();
+                data = config.animation[first].split(';').concat(data);
+            }
+            data.forEach(function(e) {
                 if(e.indexOf(':') > -1) {
                     createStartStyle(e);
                     createFinishStyle(e);

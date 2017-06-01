@@ -8,8 +8,8 @@ var animate1 = AmazingScroll({
         visibleAfterLoading:true
     },
     animation: {
-        "fade-left":"left:-300px->0; transition:all 0s->all 1s",
-        "fade-top":"top:-200px->0; opacity:0->1; transition:all 0s->all 0.5s"
+        "fade-left":"left:-300px->0; transition: all 2s",
+        "fade-top":"top:-200px->0; opacity:0->1; transition: all 0.5s"
     }
 });
 var animate2 = AmazingScroll();
